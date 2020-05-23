@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <title>FromHome</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}">
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            var user = "{{request.user}}"
+            function getCookie(name) {
+                var cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    var cookies = document.cookie.split(';');
+                    for (var i = 0; i < cookies.length; i++) {
+                        var cookie = cookies[i].trim();
+                        // Does this cookie string begin with the name we want?
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+            var csrftoken = getCookie('csrftoken');
+        </script>
+    </head>
+    
+    <body>
+        <nav class="navbar sticky-top navbar-expand-sm navbar-light" style="background-color: #cce0ec;">
+            <div class="container">  
+                <a class="navbar-brand" href="{% url 'Store Home' %}">From Home </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div style="margin-left: 18%;">
+                    <form class="form-inline my-2 my-lg-0" method="GET" action="{% url 'search' %}">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search a product/brand" aria-label="Search" id="navBarSearchForm" name="q" value={{request.GET.q}}>
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                </div>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                    </ul>
+                    {% if user.is_authenticated %}
+                    welcome {{ user.username }}
+                    <div class="form-inline my-2 my-lg-0">
+                        <a href="{% url 'logout' %}"class="btn btn-warning">Logout</a>
+                        <a href="{% url 'cart' %}">
+                        <img  id="cart-icon" src="{% static 'images/cart.png' %}">
+                        </a>
+                        <p id="cart-total">0</p>
+                    </div>
+                    {% else %}
+                    <div class="form-inline my-2 my-lg-0">
+                        <a href="{% url 'signup' %}"class="btn btn-warning" id='signup'>Sign-Up</a>
+                        <a href="{% url 'login' %}"class="btn btn-warning">Login</a>
+                    </div>
+                    {%endif%}
+                    
+                </div>
+            </div>  
+        </nav>
+        <div class="container" style="background-color: #ffffff;">
+            <div class="d-flex justify-content-around" >
+                <div class="p-2 bd-highlight">
+                    <a class="nav-link mb-0 h6" style="color: #000000;" href="{% url 'listview' %}">All Categories<span class="sr-only">(current)</span></a>
+                </div>
+                 <div class="p-2 bd-highlight">
+                     <a class="nav-link mb-0 h6" style="color: #000000;" href="{% url 'category' 'clothes' %}">Clothes<span class="sr-only">(current)</span></a>
+                 </div>
+                <div class="p-2 bd-highlight">
+                     <a class="nav-link mb-0 h6" style="color: #000000;" href="{% url 'category' 'shoes' %}">Shoes<span class="sr-only">(current)</span></a>
+                </div>
+                <div class="p-2 bd-highlight">
+                    <a class="nav-link mb-0 h6" style="color: #000000;" href="{% url 'category' 'accessories' %}">Accessories<span class="sr-only">(current)</span></a>
+                </div>
+                
+            </div>
+        </div>
+        <div class="container">
+            {% block content %}
+
+
+            {% endblock content %}
+        </div>
+        <script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+    </body>
+</html>

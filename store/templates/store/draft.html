@@ -1,0 +1,47 @@
+<nav class="navbar sticky-top navbar-expand-sm navbar-light" style="background-color: #cce0ec;">
+    <div class="container">
+        <a class="navbar-brand mb-0 h1" href="#">FromHome</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" id="navBarSearchForm">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <div class="d-flex justify-content-end">
+            <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link mb-0 h5" href="#">Sign-Up<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link mb-0 h5" href="#">Login<span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+                <div class="form-inline my-2 my-lg-0">
+                    <a href="{% url 'cart' %}">
+                        <img  id="cart-icon" src="{% static 'images/cart.png' %}">
+                    </a>
+                    <p id="cart-total">0</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div class="container" style="background-color: #ffffff;">
+    <div class="d-flex justify-content-around" >
+         <div class="p-2 bd-highlight">
+             <a class="nav-link mb-0 h6" style="color: #000000;" href="#">Clothes<span class="sr-only">(current)</span></a>
+         </div>
+        <div class="p-2 bd-highlight">
+             <a class="nav-link mb-0 h6" style="color: #000000;" href="#">Shoes<span class="sr-only">(current)</span></a>
+        </div>
+        <div class="p-2 bd-highlight">
+            <a class="nav-link mb-0 h6" style="color: #000000;" href="#">Accessories<span class="sr-only">(current)</span></a>
+        </div>
+        <div class="p-2 bd-highlight">
+            <a class="nav-link mb-0 h6" style="color: #000000;" href="#">About<span class="sr-only">(current)</span></a>
+        </div>
+    </div>
+</div>

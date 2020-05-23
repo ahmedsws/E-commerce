@@ -1,0 +1,35 @@
+{% extends 'store/base.html' %}
+{% load static %}
+{% block content %}
+<br>
+<div class="text-align: center">
+    <form method="get">
+    {{myFilter.form}}
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+<br>
+
+<div class="row">
+{% for product in products %}
+
+     <div class="col-lg-4">
+        <img class="thumbnail" src=" {{ product.imageURL }} ">
+        <div class="box-element product">
+            <h6><strong>{{product.title}}</strong></h6>
+            <hr>
+
+            <button data-product="{{product.id}}" data-action="add" class="btn btn-outline-success add-btn update-cart">Add to Cart</button>
+            <a class="btn btn-outline-info" href="{% url 'detailview' product.id %}">More</a>
+            <h4 style="float: right;"><strong>{{product.price}} LYD</strong></h4>
+
+        </div>
+    </div>
+
+{% endfor %}
+</div>
+
+{% endblock %}
+
+
+
