@@ -29,11 +29,13 @@ class Product(models.Model):
         ('rd','Red'),
         ('yl','Yellow'),
         ('gr','Green'),
+        ('cf','colorful'),
     )
 
     Season = (
         ('s','Summer'),
         ('w', 'Winter'),
+        ('a', 'all'),
     )
 
     Brand = (
@@ -59,8 +61,22 @@ class Product(models.Model):
         ('10y','9-10 Y'),
         ('11y','10-11 Y'),
         ('12y','11-12 Y'),
+        ('13y','12-13 Y'),
+        ('13y','13-14 Y'),
+        ('nul','No Size'),
     )
 
+    Category = (
+        ('sh','shoes'),
+        ('ac','accessories'),
+        ('cl','clothes'),
+    )
+
+    Availability = (
+        ('av','Available'),
+        ('bo','Booked'),
+        ('so','Sold'),
+    )
     
 
     title = models.CharField(max_length=200, null=True)
@@ -70,10 +86,12 @@ class Product(models.Model):
     season = models.CharField(choices=Season,max_length=4)
     gender = models.CharField(choices=Gender, max_length=1)
     brand = models.CharField(choices=Brand,max_length=2)
-    size = models.CharField(choices=Size,max_length=3)
+    size = models.CharField(choices=Size,max_length=3,blank=True)
     featured = models.BooleanField(default=False)
-    category = models.CharField(max_length=200, null=True)
+    category = models.CharField(choices=Category,max_length=2, null=True)
     image = models.ImageField(blank=True, null=True)
+    code = models.CharField(max_length=4,null=True)
+    availability = models.CharField(choices=Availability,max_length=2, null=True)
 
     def __str__(self):
         return self.title

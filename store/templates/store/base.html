@@ -53,7 +53,7 @@
                         <a href="{% url 'cart' %}">
                         <img  id="cart-icon" src="{% static 'images/cart.png' %}">
                         </a>
-                        <p id="cart-total">0</p>
+                        <p id="cart-total">{{cartItems}}</p>
                     </div>
                     {% else %}
                     <div class="form-inline my-2 my-lg-0">
@@ -65,19 +65,19 @@
                 </div>
             </div>  
         </nav>
-        <div class="container" style="background-color: #ffffff;">
+        <div class="container" style="background-color:hsl(0, 0%, 98%);">
             <div class="d-flex justify-content-around" >
                 <div class="p-2 bd-highlight">
                     <a class="nav-link mb-0 h6" style="color: #000000;" href="{% url 'listview' %}">All Categories<span class="sr-only">(current)</span></a>
                 </div>
                  <div class="p-2 bd-highlight">
-                     <a class="nav-link mb-0 h6" style="color: #000000;" href="{% url 'category' 'clothes' %}">Clothes<span class="sr-only">(current)</span></a>
+                     <a class="nav-link mb-0 h6" style="color: #000000;" href="{% url 'category' 'cl' %}">Clothes<span class="sr-only">(current)</span></a>
                  </div>
                 <div class="p-2 bd-highlight">
-                     <a class="nav-link mb-0 h6" style="color: #000000;" href="{% url 'category' 'shoes' %}">Shoes<span class="sr-only">(current)</span></a>
+                     <a class="nav-link mb-0 h6" style="color: #000000;" href="{% url 'category' 'sh' %}">Shoes<span class="sr-only">(current)</span></a>
                 </div>
                 <div class="p-2 bd-highlight">
-                    <a class="nav-link mb-0 h6" style="color: #000000;" href="{% url 'category' 'accessories' %}">Accessories<span class="sr-only">(current)</span></a>
+                    <a class="nav-link mb-0 h6" style="color: #000000;" href="{% url 'category' 'ac' %}">Accessories<span class="sr-only">(current)</span></a>
                 </div>
                 
             </div>
