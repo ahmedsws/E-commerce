@@ -1,13 +1,42 @@
 {% extends 'store/base.html' %}
 {% load static %}
+{% load widget_tweaks %}
 {% block content %}
+
 <br>
-<div class="text-align: center">
-    <form method="get">
-    {{myFilter.form}}
-    <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-</div>
+  <form method="get">
+    <div class="well">
+      <div class="row">
+        <div class="form-group col-sm-4 col-md-3">
+          {{ myFilter.form.title.label_tag }}
+          {% render_field myFilter.form.title class="form-control" %}
+        </div>
+        <div class="form-group col-sm-4 col-md-3">
+          {{ myFilter.form.gender.label_tag }}
+          {% render_field myFilter.form.gender class="form-control" %}
+        </div>
+        <div class="form-group col-sm-4 col-md-3">
+          {{ myFilter.form.season.label_tag }}
+          {% render_field myFilter.form.season class="form-control" %}
+        </div>
+        <div class="form-group col-sm-4 col-md-3">
+          {{ myFilter.form.brand.label_tag }}
+          {% render_field myFilter.form.brand class="form-control" %}
+        </div>
+        <div class="form-group col-sm-4 col-md-3">
+          {{ myFilter.form.size.label_tag }}
+          {% render_field myFilter.form.size class="form-control" %}
+        </div>
+        <div class="form-group col-sm-4 col-md-3">
+          {{ myFilter.form.color.label_tag }}
+          {% render_field myFilter.form.color class="form-control" %}
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">
+        <span class="glyphicon glyphicon-search"></span> Search
+      </button>
+    </div>
+  </form>
 <br>
 
 <div class="row">
