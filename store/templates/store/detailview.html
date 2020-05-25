@@ -37,9 +37,9 @@
             <h2>{{product.title}}</h2>
             <p>Product Code: {{product.code}}</p>
             <p class="price">LYD {{product.price}}</p>
-            <p><b>Availability:</b> {{product.availability}}</p>
-            <p><b>Brand:</b> {{product.brand}}</p>
-            <p><b>Size:</b> {{product.size}} </p>
+            <p><b>Availability:</b> {{product.get_availability_display}}</p>
+            <p><b>Brand:</b> {{product.get_brand_display}}</p>
+            <p><b>Size:</b> {{product.get_size_display}} </p>
             <p><b>Details:</b> {{product.details}}</p>
             <!-- <label for="">Quantity</label>
             <input type="text" value="1"> -->
